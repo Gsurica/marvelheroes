@@ -1,4 +1,5 @@
 import { Hero } from "../../../interfaces/Hero";
+
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import md5 from 'md5';
@@ -17,7 +18,7 @@ interface HeroState {
 const initialState: HeroState = {
   heroes: [],
   loading: false,
-  errors: []
+  errors: [],
 }
 
 export const getHeroes = createAsyncThunk<Hero[]>(
@@ -25,7 +26,8 @@ export const getHeroes = createAsyncThunk<Hero[]>(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get(`http://gateway.marvel.com/v1/public/characters?ts=${timeStamp}&apikey=${publicKey}&hash=${hash}`)
-      return response.data;
+      console.log(response);
+      return response.data.data.results;
     } catch (err) {
       return thunkAPI.rejectWithValue(err);
     }
@@ -38,7 +40,7 @@ export const heroSlice = createSlice({
   reducers: {
     setHeroes: (state, action: PayloadAction<Hero[]>) => {
       state.heroes = action.payload;
-    }
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getHeroes.pending, (state) => {

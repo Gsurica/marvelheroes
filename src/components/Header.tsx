@@ -1,5 +1,4 @@
-import { Grid, Container, TextField, InputAdornment, Button, ButtonGroup, Typography } from "@mui/material";
-import { Search } from "@mui/icons-material";
+import { Grid, Container, Button, ButtonGroup, Typography } from "@mui/material";
 import { Link } from 'react-router-dom';
 
 export const Header = () => {
@@ -19,20 +18,6 @@ export const Header = () => {
           >
             Heroes!
           </Typography>
-        </Grid>
-        <Grid item>
-          <TextField
-          id="input-with-icon-textfield"
-          label="Pesquisar"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <Search />
-              </InputAdornment>
-            ),
-          }}
-          variant="standard"
-          />
         </Grid>
         <Grid item>
           <ButtonGroup
