@@ -31,9 +31,13 @@ export const HeroPage = () => {
   return (
     <>
       <Container maxWidth="lg">
-        <Grid container display="flex" alignItems="center" justifyContent="center" sx={{marginTop: 4}} spacing={2} flexDirection="column">
-        <SearchBar filteredHero={filterHero} setFilteredHero={setFilterHero} />
-          <Grid item display="flex" alignItems="center" justifyContent="center" flexDirection="column">
+        <Grid container display="flex" alignItems="center" justifyContent="center">
+          <Grid item>
+            <SearchBar filteredHero={filterHero} setFilteredHero={setFilterHero} />
+          </Grid>
+        </Grid>
+        <Grid container display="flex" alignItems="center" justifyContent="center" >
+          <Grid item display="flex" alignItems="center" justifyContent="center">
             { heroes.map((hero: any) => {
               return <HeroCard name={hero.name} id={hero.id} />
             }) }

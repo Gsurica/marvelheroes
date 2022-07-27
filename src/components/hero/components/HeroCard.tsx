@@ -32,7 +32,7 @@ export const HeroCard = ({ name, id, comics, description }: HeroTypes) => {
           variant="body1"
           color="text.primary"
         >
-          { description }
+          { comics }
         </Typography>
       </CardContent>
       <CardActions>
